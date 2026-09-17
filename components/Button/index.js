@@ -1,31 +1,46 @@
 import React from "react";
-import { useTheme } from "next-themes";
 
-const Button = ({ children, type, onClick, classes }) => {
-  const { theme } = useTheme();
+const Button = ({ children, type, onClick, classes, href, target }) => {
+  const base =
+    "text-sm laptop:text-base px-4 py-2 laptop:px-5 laptop:py-2.5 rounded-full transition-all duration-300 ease-out active:scale-95";
+
   if (type === "primary") {
+    const primary = `${base} bg-signal text-white hover:brightness-110 ${classes || ""}`;
+    if (href) {
+      return (
+        <a href={href} target={target} rel="noreferrer" className={primary}>
+          {children}
+        </a>
+      );
+    }
     return (
-      <button
-        onClick={onClick}
-        type="button"
-        className={`text-sm tablet:text-base p-1 laptop:p-2 m-1 laptop:m-2 rounded-lg ${
-          theme === "dark" ? "bg-slate-300 text-black" : "bg-black text-white"
-        }  transition-all duration-300 ease-out first:ml-0 hover:scale-105 active:scale-100`}
-      >
+      <button onClick={onClick} type="button" className={primary}>
         {children}
       </button>
     );
   }
+
+  if (type === "ghost") {
+    const ghost = `${base} border border-white/15 text-ink hover:border-white/30 hover:bg-white/5 ${classes || ""}`;
+    if (href) {
+      return (
+        <a href={href} target={target} rel="noreferrer" className={ghost}>
+          {children}
+        </a>
+      );
+    }
+    return (
+      <button onClick={onClick} type="button" className={ghost}>
+        {children}
+      </button>
+    );
+  }
+
+  const plain = `text-sm laptop:text-base px-3 py-2 rounded-full flex items-center gap-1.5 transition-all duration-300 ease-out text-mist hover:text-ink hover:bg-white/5 ${
+    classes || ""
+  }`;
   return (
-    <button
-      onClick={onClick}
-      type="button"
-      className={`text-sm tablet:text-base p-1 laptop:p-2 m-1 laptop:m-2 rounded-lg flex items-center transition-all ease-out duration-300 ${
-        theme === "dark"
-          ? "hover:bg-slate-600 text-white"
-          : "hover:bg-slate-100"
-      } hover:scale-105 active:scale-100  tablet:first:ml-0 ${classes}`}
-    >
+    <button onClick={onClick} type="button" className={plain}>
       {children}
     </button>
   );

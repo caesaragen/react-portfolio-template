@@ -1,112 +1,161 @@
 {
-  "name": "Joel Ragen Aduma",
-  "headerTaglineOne": "Hello 👋",
-  "headerTaglineTwo": "I'm Joel Aduma - curious",
-  "headerTaglineThree": "software developer",
-  "headerTaglineFour": " based in Nairobi, Kenya.",
+  "name": "Joel Aduma",
+  "role": "Senior React Native Architect & Mobile Engineer",
+  "heroKicker": "Nairobi, Kenya — mobile & security engineer",
+  "heroHeadline": "I build the parts of a banking app you trust without thinking about it.",
+  "heroSubtext": "5+ years shipping React Native apps for regulated fintech — biometric authentication, offline-first sync, and SCA-compliant architecture — plus AI-integrated products for teams across three continents.",
+  "proofLine": "Diamond Trust Bank, Turing, Zapi.ai, and remote teams across Africa, Europe & Hong Kong.",
+  "resumeUrl": "/resume.pdf",
   "showBlog": false,
-  "darkMode": true,
+  "darkMode": false,
+  "email": "caesaragen@gmail.com",
   "socials": [
-    {
-      "id": "1",
-      "title": "Github",
-      "link": "https://github.com/caesaragen"
-    },
-    {
-      "id": "2",
-      "title": "LinkedIn",
-      "link": "https://www.linkedin.com/in/joel-aduma/"
-    },
-    {
-      "id": "5",
-      "title": "Email",
-      "link": "mailto:caesaragen@gmail.com"
-    }
+    { "id": "1", "title": "GitHub", "link": "https://github.com/caesaragen" },
+    { "id": "2", "title": "LinkedIn", "link": "https://www.linkedin.com/in/joel-aduma/" },
+    { "id": "5", "title": "Email", "link": "mailto:caesaragen@gmail.com" }
   ],
-  "projects": [
+  "featuredProjects": [
     {
-      "id": "6",
+      "id": "dtb",
       "title": "DTB m247",
-      "description": "Mobile App Development",
-      "imageSrc": null,
+      "tagline": "Flagship mobile banking app",
+      "description": "Senior React Native developer on Diamond Trust Bank's flagship app. Mapped Java SpringBoot microservices into offline-first state, architected modular hooks with Zustand, and shipped SCA-compliant biometric MFA.",
+      "metric": "Security rating 78% → 95%",
+      "color": "#3D8BFF",
       "url": "https://play.google.com/store/apps/details?id=com.dtb.app&hl=en"
     },
     {
-      "id": "7",
-      "title": "KejaHunt HouseHunter",
-      "description": "Mobile App Development",
-      "imageSrc": null,
+      "id": "kejahunt",
+      "title": "KejaHunt",
+      "tagline": "House-hunting, built offline-first",
+      "description": "A React Native app for finding rentals in Kenya without relying on a constant connection — local-first search and sync patterns carried over from banking work.",
+      "metric": "Personal product, solo-built",
+      "color": "#7C9CFF",
       "url": "https://play.google.com/store/apps/"
     },
     {
-      "id": "1",
-      "title": "MiphTech Company Profile",
-      "description": "Web Development",
-      "imageSrc": "https://joeladuma.netlify.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmip.62c03ccb.png&w=1920&q=75",
-      "url": "https://miphtech.netlify.app/"
-    },
+      "id": "carbon",
+      "title": "Reduce My Carbon",
+      "tagline": "Carbon calculator with M-PESA payouts",
+      "description": "Architected the MVP for a carbon-emission calculator: mobile app plus API, M-PESA integration for offset payments, and biometric authentication for identity.",
+      "metric": "Mobile app + API, MVP to launch",
+      "color": "#5FD4A0",
+      "url": "https://github.com/caesaragen"
+    }
+  ],
+  "otherProjects": [
     {
-      "id": "5",
-      "title": "ZAPI.ai AI API Marketplace",
-      "description": "Frontend Development",
-      "imageSrc": null,
-      "url": "https://zapi.ai/"
-    },
-    {
-      "id": "2",
-      "title": "React Admin Dashboard",
-      "description": "Web Development",
-      "imageSrc": "https://joeladuma.netlify.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fdsh.8153bc03.png&w=1920&q=75",
-      "url": "https://company-dashboard.vercel.app/"
-    },
-    {
-      "id": "3",
-      "title": "Africa Mining Legislation Atlas (AMLA)",
-      "description": "Web Development",
-      "imageSrc": "https://joeladuma.netlify.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Famlaorg.13069d88.png&w=1920&q=75",
+      "id": "amla",
+      "title": "Africa Mining Legislation Atlas",
+      "description": "Built the entire frontend for the African Legal Support Facility (African Development Bank) — data-dense geographic mapping and legislation dashboards.",
+      "year": "2021–2022",
       "url": "https://a-mla.org/en"
     },
     {
-      "id": "4",
+      "id": "afaa",
       "title": "Africa Arbitration Atlas",
-      "description": "Web Development",
-      "imageSrc": "https://joeladuma.netlify.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcomparison.96f8ef16.png&w=1920&q=75",
+      "description": "Front-end development for a research platform tracking arbitration law across the continent.",
+      "year": "2021",
       "url": "https://africanarbitrationatlas.org/atlas/"
+    },
+    {
+      "id": "zapi",
+      "title": "Zapi.ai",
+      "description": "Modular React + TypeScript components for an AI API marketplace, including live-preview SDK documentation. Cut onboarding friction by 40%.",
+      "year": "2022–2023",
+      "url": "https://zapi.ai/"
     }
   ],
-  "services": [
+  "experience": [
     {
-      "id": "1",
-      "title": "React",
-      "description": "Wide experience in frontend development with React Js and Next.js."
+      "company": "Turing",
+      "role": "Full-Stack Software Engineer — Generalist, AI Projects",
+      "period": "Jan 2026 – Apr 2026",
+      "location": "Nairobi, Kenya (Contract)",
+      "points": [
+        "Selected for a global contractor role on Turing's Generalist track, working across ambiguous problem spaces and unfamiliar codebases.",
+        "Integrated LLM capabilities into applications — prompt-driven workflows, data transformation, and intelligent feature layers.",
+        "Collaborated with globally distributed teams on system design, code review, and iterative delivery."
+      ]
     },
     {
-      "id": "21",
-      "title": "React Native",
-      "description": "Extensive experience in building high-performance mobile applications using React Native, with a focus on security, biometrics, and fintech solutions."
-    },    
-    {
-      "id": "2",
-      "title": "JavaScript",
-      "description": "I have in-depth knowledge of JavaScript (ES6), both for frontend and backend development."
+      "company": "Diamond Trust Bank",
+      "role": "Senior React Native Developer",
+      "period": "Jul 2023 – Present",
+      "location": "Nairobi, Kenya",
+      "points": [
+        "Mapped Java SpringBoot microservice APIs to React Native state, ensuring offline-first sync across the flagship banking app.",
+        "Architected modular components and custom hooks in TypeScript and Zustand, cutting code duplication by 30%.",
+        "Integrated SCA-compliant biometric MFA, raising the internal security audit score from 78% to 95%.",
+        "Automated build and distribution via Firebase App Distribution and TestFlight, cutting deployment time by 40%.",
+        "Mentored two junior developers on mobile architecture, Git workflow, and performance profiling.",
+        "Drove performance work that cut app startup time by 30% and held crash-free sessions above 99.5%."
+      ]
     },
     {
-      "id": "3",
-      "title": "Node.js",
-      "description": "Why stop at Frontend? I also do backend development using Node.js and Express."
+      "company": "Amband Ltd",
+      "role": "Full Stack Developer",
+      "period": "Sep 2022 – Jun 2023",
+      "location": "Nairobi, Kenya",
+      "points": [
+        "Built high-throughput Laravel APIs tuned for low-bandwidth environments behind Android utility apps.",
+        "Shipped the API for a waste-collection system used at Kakuma Refugee Camp, in partnership with DanChurch Aid Kenya."
+      ]
     },
     {
-      "id": "4",
-      "title": "Laravel",
-      "description": "I have demonstrated severally my Laravel abilities for key projects such as AMLA and Africa Arbitration Atlas. As well as API development."
+      "company": "Zummit Africa",
+      "role": "Frontend Developer",
+      "period": "Nov 2022 – Mar 2023",
+      "location": "Lagos, Nigeria (Remote)",
+      "points": [
+        "Built modular React + TypeScript components for Zapi.ai, an AI API marketplace.",
+        "Improved onboarding by 40% by integrating AI SDK documentation interfaces for remote teams.",
+        "Raised UI rendering efficiency by 25% through memoization and React performance profiling."
+      ]
     },
     {
-      "id": "05f6299a-ebed-4bc2-b5ab-584ebd8787cc",
-      "title": "PHP",
-      "description": "More than 2 years using PHP as my go-to language for backend development."
+      "company": "Farwell Innovations Ltd",
+      "role": "Software Developer",
+      "period": "Mar 2021 – Jul 2022",
+      "location": "Nairobi, Kenya",
+      "points": [
+        "Built corporate e-learning platforms for enterprise clients using Laravel and React Native.",
+        "Implemented reusable UI components and Firebase Cloud Messaging push notifications.",
+        "Built React dashboards for learning analytics, 20% faster to load than the previous version."
+      ]
+    },
+    {
+      "company": "Save the Children International",
+      "role": "IT Intern",
+      "period": "Mar 2020 – May 2020",
+      "location": "Nairobi, Kenya",
+      "points": [
+        "Updated and validated the internal Snipe-IT asset management system.",
+        "Automated reporting scripts, removing redundant asset entries and improving data accuracy."
+      ]
     }
   ],
-"aboutpara": "I am a Full Stack Developer with a Bachelor's degree in Applied Computer Technology and 5+ years of experience in React, React Native, TypeScript, and Node.js. Currently, I work as a senior mobile developer in Kenya, specializing in fintech applications with a strong focus on security, performance, and user experience.\n\nI have collaborated with global teams across Africa, Europe, and Hong Kong, delivering scalable web and mobile solutions. My expertise includes biometric authentication, AWS Liveness Detection, and Strong Customer Authentication (SCA).\n\n🚀 Core Skills:\n- Frontend & Mobile: React, React Native, TypeScript, Next.js\n- Backend & APIs: Node.js, Laravel/PHP, Firebase, GraphQL\n- Security & Authentication: Biometric auth, AWS Liveness, SCA\n\n🎯 Highlights:\n- Lead developer on high-security fintech projects\n- Integrated biometrics authentication in mobile banking apps\n- Building a personal React Native project with AI & blockchain\n\nAlways open to new challenges—let’s connect!"
-
-
+  "skills": [
+    {
+      "category": "Mobile & Frontend",
+      "items": ["React Native", "TypeScript", "React", "Next.js", "Zustand", "React Navigation", "Context API", "Expo", "GraphQL", "REST APIs"]
+    },
+    {
+      "category": "Security & Authentication",
+      "items": ["Biometric Auth (Face ID / Touch ID)", "SCA", "MFA", "OAuth2", "JWT", "AWS Liveness Detection"]
+    },
+    {
+      "category": "Backend & Integration",
+      "items": ["Node.js / Express", "Laravel / PHP", "MySQL", "MongoDB"]
+    },
+    {
+      "category": "Cloud & Delivery",
+      "items": ["AWS Amplify", "Firebase Firestore", "Firebase Cloud Messaging", "S3", "TestFlight", "Firebase Analytics"]
+    },
+    {
+      "category": "Testing & Collaboration",
+      "items": ["Jest", "Playwright", "Azure DevOps", "Jira", "Agile / Scrum"]
+    }
+  ],
+  "about": "I'm a senior React Native engineer based in Nairobi, currently building the mobile banking app at Diamond Trust Bank — the kind of app where a dropped frame or a biometric edge case is a production incident, not a bug ticket.\n\nMost of my last five years have gone into that discipline: bridging device hardware and biometrics with TypeScript mobile architecture, keeping apps usable offline, and passing security audits rather than just clearing them. I've done the same thing for a carbon-offset app with M-PESA payouts and a personal house-hunting app, and shipped the frontend for legal and civic platforms used across Africa.\n\nI've worked with teams in Nairobi, Lagos, Hong Kong, and fully remote AI teams through Turing — different codebases, same habit of asking what happens when the network drops or the fingerprint sensor fails.\n\nCurrently open to senior React Native and mobile architecture roles."
 }

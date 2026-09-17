@@ -1,23 +1,29 @@
 import React from "react";
 import Socials from "../Socials";
-import Link from "next/link";
+import data from "../../data/portfolio.json";
 
-const Footer = ({ dark }) => {
+const Footer = () => {
+  const year = new Date().getFullYear();
   return (
-    <>
-      <div className="mt-5 laptop:mt-40 p-2 laptop:p-0">
-        <h1 className="text-2xl text-bold">Contact.</h1>
-        <div className="mt-5">
-          <Socials />
-        </div>
+    <div className="mt-24 laptop:mt-32 pt-10 border-t border-white/10 flex flex-col tablet:flex-row tablet:items-end justify-between gap-8">
+      <div>
+        <h2 className="text-2xl laptop:text-3xl font-semibold tracking-tight">
+          Let’s build something that has to work.
+        </h2>
+        <a
+          href={`mailto:${data.email}`}
+          className="mt-2 inline-block text-mist hover:text-signal transition-colors"
+        >
+          {data.email}
+        </a>
       </div>
-      <h1 className="text-sm text-bold mt-2 laptop:mt-10 p-2 laptop:p-0">
-        Made With ❤ by{" "}
-        <Link href="https://www.linkedin.com/in/joel-aduma/">
-          <a className="underline underline-offset-1">Joel Aduma</a>
-        </Link>
-      </h1>
-    </>
+      <div className="flex flex-col tablet:items-end gap-4">
+        <Socials />
+        <p className="text-xs text-mist/60">
+          © {year} {data.name}. Built with Next.js.
+        </p>
+      </div>
+    </div>
   );
 };
 

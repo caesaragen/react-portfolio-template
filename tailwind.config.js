@@ -12,7 +12,19 @@ module.exports = {
       desktop: "1280px",
       laptopl: "1440px",
     },
-    extend: {},
+    extend: {
+      colors: {
+        void: "#06070a",
+        surface: "#12131a",
+        "surface-2": "#1b1d26",
+        ink: "#f4f5f7",
+        mist: "#9aa1ae",
+        signal: "#3d8bff",
+      },
+      fontFamily: {
+        sora: ["Sora", "-apple-system", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };

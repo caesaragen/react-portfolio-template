@@ -1,183 +1,193 @@
 import { useRef } from "react";
-import Header from "../components/Header";
-import ServiceCard from "../components/ServiceCard";
-import Socials from "../components/Socials";
-import WorkCard from "../components/WorkCard";
-import { useIsomorphicLayoutEffect } from "../utils";
-import { stagger } from "../animations";
-import Footer from "../components/Footer";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import Button from "../components/Button";
-import Link from "next/link";
-import { FaLaravel } from "react-icons/fa";
-import { FaHtml5 } from "react-icons/fa";
-import { FaCss3 } from "react-icons/fa";
-import { FaJs } from "react-icons/fa";
-import { FaNodeJs } from "react-icons/fa";
-import { FaPhp } from "react-icons/fa";
-import { FaReact } from "react-icons/fa";
-import { SiTypescript, SiTailwindcss } from "react-icons/si";
-import Image from "next/image";
-import Zapi from "../data/images/zapi.png";
+import Socials from "../components/Socials";
+import PhoneMockup from "../components/PhoneMockup";
+import ProjectRow from "../components/ProjectRow";
+import Timeline from "../components/Timeline";
+import SkillGroup from "../components/SkillGroup";
+import { useIsomorphicLayoutEffect } from "../utils";
+import { stagger, revealOnScroll } from "../animations";
 
-
-import DTB from "../data/images/6.jpg";
-import KJ  from "../data/images/7.png";
-
-
-
-
-// Local Data
 import data from "../data/portfolio.json";
 
-const imageMap = {
-  "6": DTB.src,
-  "7": KJ.src,
-  "5": Zapi.src,
-  // Add more mappings as needed
-};
-
-
-const icons = { 
-  "Laravel": <FaLaravel color="#fb503b"/>,
-  "html": <FaHtml5/>,
-  "css": <FaCss3/>,
-  "JavaScript": <FaJs color="#F0DB4F"/>,
-  "Node.js": <FaNodeJs color="#3c873a"/>,
-  "PHP": <FaPhp color="#8993be"/>,
-  "React": <FaReact color="#61DBFB"/>,
-  "typescript": <SiTypescript/>,
-  "tailwind": <SiTailwindcss />,
-  "React Native": <FaReact color="#61DBFB"/>,
-}
-
 export default function Home() {
-  // Ref
+  const router = useRouter();
   const workRef = useRef();
+  const experienceRef = useRef();
   const aboutRef = useRef();
-  const textOne = useRef();
-  const textTwo = useRef();
-  const textThree = useRef();
-  const textFour = useRef();
+  const kicker = useRef();
+  const headline = useRef();
+  const subtext = useRef();
+  const cta = useRef();
+  const phone = useRef();
 
-  // Handling Scroll
-  const handleWorkScroll = () => {
-    window.scrollTo({
-      top: workRef.current.offsetTop,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
+  const workIntroRef = useRef();
+  const featuredListRef = useRef();
+  const otherHeadingRef = useRef();
+  const otherListRef = useRef();
+  const experienceHeadingRef = useRef();
+  const skillsHeadingRef = useRef();
+  const skillsListRef = useRef();
+  const aboutHeadingRef = useRef();
+  const aboutListRef = useRef();
 
-  const handleAboutScroll = () => {
-    window.scrollTo({
-      top: aboutRef.current.offsetTop,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
+  const scrollTo = (ref) => () =>
+    window.scrollTo({ top: ref.current.offsetTop - 40, left: 0, behavior: "smooth" });
 
   useIsomorphicLayoutEffect(() => {
     stagger(
-      [textOne.current, textTwo.current, textThree.current, textFour.current],
-      { y: 30 },
+      [kicker.current, headline.current, subtext.current, cta.current],
+      { y: 24 },
       { y: 0 }
     );
+    stagger([phone.current], { y: 16, scale: 0.96 }, { y: 0, scale: 1 });
+
+    revealOnScroll(workRef.current, [workIntroRef.current], { y: 16 });
+    revealOnScroll(featuredListRef.current, featuredListRef.current?.children, { y: 20 });
+    revealOnScroll(otherListRef.current, [otherHeadingRef.current, otherListRef.current], { y: 16 });
+    revealOnScroll(experienceRef.current, [experienceHeadingRef.current], { y: 16 });
+    revealOnScroll(skillsHeadingRef.current, [skillsHeadingRef.current], { y: 16 });
+    revealOnScroll(skillsListRef.current, skillsListRef.current?.children, { y: 16 });
+    revealOnScroll(aboutRef.current, [aboutHeadingRef.current], { y: 16 });
+    revealOnScroll(aboutListRef.current, aboutListRef.current?.children, { y: 14 });
   }, []);
 
-  console.log(Zapi.src)
-  console.log(DTB.src)
-  // use ZApi.src to get the path to the image
+  const aboutParagraphs = data.about.split("\n\n");
 
-  const lines = data.aboutpara.split("\n");
   return (
     <>
       <Head>
-        <title>{data.name}</title>
+        <title>{data.name} — {data.role}</title>
+        <meta name="description" content={data.heroSubtext} />
       </Head>
-      {/* This button should not go into production */}
+
       {process.env.NODE_ENV === "development" && (
-        <div className="fixed bottom-5 right-5">
-          <Link href="/edit">
-            <Button type="primary">Edit Data</Button>
-          </Link>
+        <div className="fixed bottom-5 right-5 z-30">
+          <Button type="primary" onClick={() => router.push("/edit")}>
+            Edit Data
+          </Button>
         </div>
       )}
 
-      <div className="container mx-auto mb-10">
+      <div className="max-w-5xl mx-auto px-5 laptop:px-0 pb-24">
         <Header
-          handleWorkScroll={handleWorkScroll}
-          handleAboutScroll={handleAboutScroll}
+          handleWorkScroll={scrollTo(workRef)}
+          handleExperienceScroll={scrollTo(experienceRef)}
+          handleAboutScroll={scrollTo(aboutRef)}
         />
-        <div className="laptop:mt-20 mt-10">
-          <div className="mt-5">
+
+        {/* Hero */}
+        <section className="grid grid-cols-1 tablet:grid-cols-[1.15fr_0.85fr] gap-12 items-center pt-14 laptop:pt-20">
+          <div>
+            <p ref={kicker} className="text-signal font-medium">
+              {data.heroKicker}
+            </p>
             <h1
-              ref={textOne}
-              className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-4/5 mob:w-full laptop:w-4/5"
+              ref={headline}
+              className="mt-4 text-4xl mob:text-5xl laptop:text-6xl font-bold tracking-tight leading-[1.08]"
             >
-              {data.headerTaglineOne}
+              {data.heroHeadline}
             </h1>
-            <h1
-              ref={textTwo}
-              className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-full laptop:w-4/5"
-            >
-              {data.headerTaglineTwo}
-            </h1>
-            <h1
-              ref={textThree}
-              className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-full laptop:w-4/5"
-            >
-              {data.headerTaglineThree}
-            </h1>
-            <h1
-              ref={textFour}
-              className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-full laptop:w-4/5"
-            >
-              {data.headerTaglineFour}
-            </h1>
+            <p ref={subtext} className="mt-6 text-lg text-mist leading-relaxed max-w-xl">
+              {data.heroSubtext}
+            </p>
+            <div ref={cta} className="mt-8 flex flex-wrap items-center gap-3">
+              <Button type="primary" onClick={scrollTo(workRef)}>
+                See the work
+              </Button>
+              <Button type="ghost" href={data.resumeUrl} target="_blank">
+                Download résumé
+              </Button>
+            </div>
+            <p className="mt-8 text-sm text-mist/70 max-w-md">{data.proofLine}</p>
+            <div className="mt-6 tablet:hidden">
+              <Socials />
+            </div>
+          </div>
+          <div ref={phone} className="hidden mob:block transition-transform duration-500 ease-out hover:scale-[1.03]">
+            <PhoneMockup />
+          </div>
+        </section>
+
+        {/* Work */}
+        <section ref={workRef} className="pt-28 laptop:pt-36 scroll-mt-24">
+          <div ref={workIntroRef}>
+            <h2 className="text-2xl laptop:text-3xl font-semibold tracking-tight">Mobile work</h2>
+            <p className="mt-2 text-mist max-w-xl">
+              The apps I’ve spent the most care on — where the interesting problems are offline
+              state, biometrics, and keeping a banking-grade experience feeling fast.
+            </p>
+          </div>
+          <div ref={featuredListRef} className="mt-6">
+            {data.featuredProjects.map((project) => (
+              <ProjectRow key={project.id} project={project} />
+            ))}
           </div>
 
-          <Socials className="mt-2 laptop:mt-5" />
-        </div>
-        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={workRef}>
-          <h1 className="text-2xl text-bold">Work.</h1>
-          <div className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 gap-4 object-contain">
-            {data.projects.map((project) => (
-              <WorkCard
+          <h3 ref={otherHeadingRef} className="mt-16 text-lg font-medium text-ink">
+            Also built
+          </h3>
+          <div ref={otherListRef} className="mt-4 divide-y divide-white/10">
+            {data.otherProjects.map((project) => (
+              <a
                 key={project.id}
-                img={project.imageSrc || imageMap[project.id]}
-                name={project.title}
-                description={project.description}
-                onClick={() => window.open(project.url)}
-              />
+                href={project.url}
+                target="_blank"
+                rel="noreferrer"
+                className="group flex flex-wrap items-baseline justify-between gap-2 py-4"
+              >
+                <span>
+                  <span className="font-medium group-hover:text-signal transition-colors">
+                    {project.title}
+                  </span>
+                  <span className="text-mist text-sm"> — {project.description}</span>
+                </span>
+                <span className="text-sm text-mist/70 shrink-0">{project.year}</span>
+              </a>
             ))}
           </div>
-        </div>
-        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0">
-          <h1 className="tablet:m-10 text-2xl text-bold">Specialities.</h1>
-          <div className="mt-5 tablet:m-10 grid grid-cols-1 laptop:grid-cols-2 gap-6">
-            {data.services.map((service, index) => (
-              <ServiceCard
-                key={index}
-                name={service.title}
-                description={service.description}
-                icon={icons[service.title]}
-              />
-            ))}
-          </div>
-        </div>
-        <div className="mt-10 laptop:mt-40 p-2 laptop:p-0" ref={aboutRef}>
-          <h1 className="tablet:m-10 text-2xl text-bold">About.</h1>
-          <p className="tablet:m-10 mt-2 text-xl laptop:text-3xl w-full laptop:w-full">
-            {lines.map((line, index) => (
-              <span key={index}>
-                {line}
-                <br />
-              </span>
-            ))}
+        </section>
 
-          </p>
-        </div>
+        {/* Experience */}
+        <section ref={experienceRef} className="pt-28 laptop:pt-36 scroll-mt-24">
+          <h2 ref={experienceHeadingRef} className="text-2xl laptop:text-3xl font-semibold tracking-tight">
+            Experience
+          </h2>
+          <div className="mt-10">
+            <Timeline items={data.experience} />
+          </div>
+        </section>
+
+        {/* Skills */}
+        <section className="pt-28 laptop:pt-36">
+          <h2 ref={skillsHeadingRef} className="text-2xl laptop:text-3xl font-semibold tracking-tight">
+            Skills
+          </h2>
+          <div ref={skillsListRef} className="mt-6">
+            {data.skills.map((group) => (
+              <SkillGroup key={group.category} category={group.category} items={group.items} />
+            ))}
+          </div>
+        </section>
+
+        {/* About */}
+        <section ref={aboutRef} className="pt-28 laptop:pt-36 scroll-mt-24">
+          <h2 ref={aboutHeadingRef} className="text-2xl laptop:text-3xl font-semibold tracking-tight">
+            About
+          </h2>
+          <div ref={aboutListRef} className="mt-6 max-w-2xl space-y-5">
+            {aboutParagraphs.map((para, i) => (
+              <p key={i} className="text-lg text-mist leading-relaxed">
+                {para}
+              </p>
+            ))}
+          </div>
+        </section>
+
         <Footer />
       </div>
     </>
